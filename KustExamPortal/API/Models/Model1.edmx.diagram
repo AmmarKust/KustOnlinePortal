@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c62801676c1447f686a28b3d9cee2e3a" Name="Diagram1">
+        <EntityTypeShape EntityType="KustOnlinePortalModel.Authentication" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KustOnlinePortalModel.DateSheet" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KustOnlinePortalModel.ExamAttendance" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KustOnlinePortalModel.Information" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KustOnlinePortalModel.Notification" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KustOnlinePortalModel.RoomsSeat" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KustOnlinePortalModel.Subject" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <AssociationConnector Association="KustOnlinePortalModel.FK__ExamAtten__Regis__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="KustOnlinePortalModel.FK__Informati__Regis__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="KustOnlinePortalModel.FK__Notificat__Regis__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="KustOnlinePortalModel.FK__RoomsSeat__Regis__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="KustOnlinePortalModel.FK__Subjects__Regisr__2D27B809" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

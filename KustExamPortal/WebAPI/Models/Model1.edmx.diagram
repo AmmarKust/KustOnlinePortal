@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3193c6418b1b4900a362dc10166c10c2" Name="Diagram1">
+        <EntityTypeShape EntityType="KustOnlinePortalModel.Room" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="KustOnlinePortalModel.DateSheet" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KustOnlinePortalModel.Seat" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="KustOnlinePortalModel.Authentication" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="KustOnlinePortalModel.ExamAttendance" Width="1.5" PointX="3" PointY="7" />
+        <AssociationConnector Association="KustOnlinePortalModel.FK_ExamAttendance_Authentication" />
+        <EntityTypeShape EntityType="KustOnlinePortalModel.Subject" Width="1.5" PointX="5.375" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

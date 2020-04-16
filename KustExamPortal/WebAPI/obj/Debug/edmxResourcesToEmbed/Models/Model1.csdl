@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KustOnlinePortalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="KustOnlinePortalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Rooms" EntityType="KustOnlinePortalModel.Room" />
+    <EntitySet Name="DateSheets" EntityType="KustOnlinePortalModel.DateSheet" />
+    <EntitySet Name="Seats" EntityType="KustOnlinePortalModel.Seat" />
+    <EntitySet Name="Authentications" EntityType="KustOnlinePortalModel.Authentication" />
+    <EntitySet Name="ExamAttendances" EntityType="KustOnlinePortalModel.ExamAttendance" />
+    <AssociationSet Name="FK_ExamAttendance_Authentication" Association="KustOnlinePortalModel.FK_ExamAttendance_Authentication">
+      <End Role="Authentication" EntitySet="Authentications" />
+      <End Role="ExamAttendance" EntitySet="ExamAttendances" />
+    </AssociationSet>
+    <EntitySet Name="Subjects" EntityType="KustOnlinePortalModel.Subject" />
+  </EntityContainer>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Room1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Paper" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Faculty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DateSheet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Room" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Paper" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Semester" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Seat">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Room" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SeatNo" Type="Int32" Nullable="false" />
+    <Property Name="Paper" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Authentication">
+    <Key>
+      <PropertyRef Name="RegistrationNo" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegistrationNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ExamAttendances" Relationship="KustOnlinePortalModel.FK_ExamAttendance_Authentication" FromRole="Authentication" ToRole="ExamAttendance" />
+  </EntityType>
+  <EntityType Name="ExamAttendance">
+    <Key>
+      <PropertyRef Name="CourseCode" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CourseTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Authentication" Relationship="KustOnlinePortalModel.FK_ExamAttendance_Authentication" FromRole="ExamAttendance" ToRole="Authentication" />
+  </EntityType>
+  <Association Name="FK_ExamAttendance_Authentication">
+    <End Type="KustOnlinePortalModel.Authentication" Role="Authentication" Multiplicity="1" />
+    <End Type="KustOnlinePortalModel.ExamAttendance" Role="ExamAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authentication">
+        <PropertyRef Name="RegistrationNo" />
+      </Principal>
+      <Dependent Role="ExamAttendance">
+        <PropertyRef Name="RegistrationNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="CourseCode" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CourseTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Semester" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

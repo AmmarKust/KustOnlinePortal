@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KustOnlinePortalModelStoreContainer" CdmEntityContainer="KustOnlinePortalEntities">
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="KustOnlinePortalModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+          <ScalarProperty Name="Paper" ColumnName="Paper" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Room1" ColumnName="Room" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DateSheets">
+      <EntityTypeMapping TypeName="KustOnlinePortalModel.DateSheet">
+        <MappingFragment StoreEntitySet="DateSheet">
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="Paper" ColumnName="Paper" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seats">
+      <EntityTypeMapping TypeName="KustOnlinePortalModel.Seat">
+        <MappingFragment StoreEntitySet="Seat">
+          <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+          <ScalarProperty Name="Paper" ColumnName="Paper" />
+          <ScalarProperty Name="SeatNo" ColumnName="SeatNo" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authentications">
+      <EntityTypeMapping TypeName="KustOnlinePortalModel.Authentication">
+        <MappingFragment StoreEntitySet="Authentication">
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamAttendances">
+      <EntityTypeMapping TypeName="KustOnlinePortalModel.ExamAttendance">
+        <MappingFragment StoreEntitySet="ExamAttendance">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+          <ScalarProperty Name="CourseTitle" ColumnName="CourseTitle" />
+          <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="KustOnlinePortalModel.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="CourseTitle" ColumnName="CourseTitle" />
+          <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

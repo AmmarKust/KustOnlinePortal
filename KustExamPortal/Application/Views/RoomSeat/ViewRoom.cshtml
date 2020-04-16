@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Application.Models.RoomsModel>
+
+@{
+    ViewBag.Title = "ViewRoom";
+    Layout = "~/Views/Shared/AdminDashboard.cshtml";
+}
+
+<h2>ViewRoom</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddRoom", "RoomSeat", new { @class = "btn btn-success" })</p>
+<table class="table">
+    <tr>
+        <th>
+            Room
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Faculty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paper)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faculty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paper)
+            </td>
+            <td>
+               <a href="@Url.Action("AddRoom","RoomSeat",new { id=item.ID})" class="btn btn-warning">Edit</a>
+               <a onclick="Delete(@item.ID)" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts
+{
+    <script>
+
+        $(function () {
+             var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+
+        function Delete(id) {
+            alertify.confirm('Kust Exam Portal', 'Are you Sure to Delete this Record?',function () {
+                window.location.href = '@Url.Action("DeleteRoom","RoomSeat")/' + id;
+            }, null);
+        }
+    </script>
+}

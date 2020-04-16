@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Application.Models.Authentication>
+
+@{
+    ViewBag.Title = "ViewUsers";
+    Layout = "~/Views/Shared/AdminDashboard.cshtml";
+}
+
+<h2>View Users</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegistrationNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+
+        <th>Level</th>
+        <th>Actions</th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ID)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.RegistrationNo)
+    </td>
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Password)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.level)
+    </td>
+
+    <td>
+        @Html.ActionLink("Edit", "EditUser", new { id = item.ID }, new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("Delete", "DeleteUser", new { id = item.ID }, new { @class = "btn btn-danger" })
+    </td>
+</tr>
+        }
+    }
+    
+
+
+</table>

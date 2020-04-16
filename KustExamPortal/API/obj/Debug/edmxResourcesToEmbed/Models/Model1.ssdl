@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KustOnlinePortalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Authentication">
+    <Key>
+      <PropertyRef Name="RegistrationNo" />
+    </Key>
+    <Property Name="RegistrationNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID" Type="int" />
+  </EntityType>
+  <EntityType Name="DateSheet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Room" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Time" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Paper" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Semester" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ExamAttendance">
+    <Key>
+      <PropertyRef Name="CourseCode" />
+    </Key>
+    <Property Name="CourseCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Attendance" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegisrationNo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Information">
+    <Key>
+      <PropertyRef Name="CNIC" />
+    </Key>
+    <Property Name="CNIC" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FatherName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmergencyNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegisrationNo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="NotificationNo" />
+    </Key>
+    <Property Name="NotificationNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegisrationNo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RoomsSeats">
+    <Key>
+      <PropertyRef Name="RoomCode" />
+    </Key>
+    <Property Name="RoomCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Times" Type="time" Precision="7" Nullable="false" />
+    <Property Name="SeatNo" Type="int" Nullable="false" />
+    <Property Name="Paper" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegisrationNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Faculty" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subjects">
+    <Key>
+      <PropertyRef Name="CourseCode" />
+    </Key>
+    <Property Name="CourseCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Semester" Type="int" Nullable="false" />
+    <Property Name="RegisrationNo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__ExamAtten__Regis__35BCFE0A">
+    <End Role="Authentication" Type="Self.Authentication" Multiplicity="0..1" />
+    <End Role="ExamAttendance" Type="Self.ExamAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authentication">
+        <PropertyRef Name="RegistrationNo" />
+      </Principal>
+      <Dependent Role="ExamAttendance">
+        <PropertyRef Name="RegisrationNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Informati__Regis__276EDEB3">
+    <End Role="Authentication" Type="Self.Authentication" Multiplicity="0..1" />
+    <End Role="Information" Type="Self.Information" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authentication">
+        <PropertyRef Name="RegistrationNo" />
+      </Principal>
+      <Dependent Role="Information">
+        <PropertyRef Name="RegisrationNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__Regis__32E0915F">
+    <End Role="Authentication" Type="Self.Authentication" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authentication">
+        <PropertyRef Name="RegistrationNo" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="RegisrationNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoomsSeat__Regis__300424B4">
+    <End Role="Authentication" Type="Self.Authentication" Multiplicity="0..1" />
+    <End Role="RoomsSeats" Type="Self.RoomsSeats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authentication">
+        <PropertyRef Name="RegistrationNo" />
+      </Principal>
+      <Dependent Role="RoomsSeats">
+        <PropertyRef Name="RegisrationNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Subjects__Regisr__2D27B809">
+    <End Role="Authentication" Type="Self.Authentication" Multiplicity="0..1" />
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authentication">
+        <PropertyRef Name="RegistrationNo" />
+      </Principal>
+      <Dependent Role="Subjects">
+        <PropertyRef Name="RegisrationNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KustOnlinePortalModelStoreContainer">
+    <EntitySet Name="Authentication" EntityType="Self.Authentication" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DateSheet" EntityType="Self.DateSheet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamAttendance" EntityType="Self.ExamAttendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Information" EntityType="Self.Information" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoomsSeats" EntityType="Self.RoomsSeats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ExamAtten__Regis__35BCFE0A" Association="Self.FK__ExamAtten__Regis__35BCFE0A">
+      <End Role="Authentication" EntitySet="Authentication" />
+      <End Role="ExamAttendance" EntitySet="ExamAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Informati__Regis__276EDEB3" Association="Self.FK__Informati__Regis__276EDEB3">
+      <End Role="Authentication" EntitySet="Authentication" />
+      <End Role="Information" EntitySet="Information" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__Regis__32E0915F" Association="Self.FK__Notificat__Regis__32E0915F">
+      <End Role="Authentication" EntitySet="Authentication" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoomsSeat__Regis__300424B4" Association="Self.FK__RoomsSeat__Regis__300424B4">
+      <End Role="Authentication" EntitySet="Authentication" />
+      <End Role="RoomsSeats" EntitySet="RoomsSeats" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Subjects__Regisr__2D27B809" Association="Self.FK__Subjects__Regisr__2D27B809">
+      <End Role="Authentication" EntitySet="Authentication" />
+      <End Role="Subjects" EntitySet="Subjects" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
